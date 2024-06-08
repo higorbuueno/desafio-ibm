@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { Customer } from '../../interface/customer';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BankTransactionHttpService } from '../transaction-http.service';
 import { BankTransaction } from '../../interface/bank-transaction';
@@ -24,7 +24,7 @@ export class BankTransactionAddComponent {
 
   form: FormGroup = this.fb.group({
     value: [null],
-    type: [null],
+    type: [null, Validators.required],
     customer: [this._customerService.customer],
   });
 
