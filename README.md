@@ -40,4 +40,4 @@ docker compose up
 ```
 
 Pronto!
-Agora só acessar aplicação clicando **[aqui](http://localhost:4200/)** (http://localhost:4200/).
+Agora só acessar aplicação clicando **<a href="http://localhost:4200/" target="_blank">aqui</a>.** (http://localhost:4200/).
