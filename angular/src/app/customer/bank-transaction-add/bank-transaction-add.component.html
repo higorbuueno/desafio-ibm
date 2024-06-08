@@ -1,0 +1,53 @@
+<div class="customer-add-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="this.form">
+        <div class="row form-group">
+          <div class="col-8">
+            <label>Valor</label>
+            <input
+              id="value"
+              formControlName="value"
+              [autofocus]
+              type="number"
+              class="form-control"
+              placeholder="1000.00"
+            />
+          </div>
+          <div class="col-4">
+            <label>Tipo</label>
+            <select class="form-select" formControlName="type">
+              @for (transaction of bankTransactionType | keyvalue; track
+              transaction.key) {
+              <option [value]="transaction.key">
+                {{ transaction.value | uppercase }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="d-flex align-items-start justify-content-end gap-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary ml-1"
+          (click)="this.cancel()"
+          rippleEffect
+        >
+          <span class="font-size-10">CANCELAR</span>
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!this.form.valid"
+          (click)="this.submit()"
+          rippleEffect
+        >
+          <span class="font-size-10">CADASTRAR</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

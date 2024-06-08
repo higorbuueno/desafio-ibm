@@ -1,0 +1,47 @@
+<div
+  class="alert alert-secondary d-flex justify-content-between align-item-center"
+  role="alert"
+>
+  <span>
+    <img src="../../../assets/logo/ibm.png" alt="ibm_logo" height="45px" />
+  </span>
+  <div>
+    @if(customer) {
+    <div class="d-flex flex-column gap-2 text-end">
+      <div class="d-flex gap-2 text-end">
+        <span>
+          <button class="btn btn-outline-primary" (click)="this.back()">
+            VOLTAR
+          </button>
+        </span>
+        <span>
+          <button class="btn btn-primary" (click)="this.newTransaction()">
+            NOVA MOVIMENTAÇÃO
+          </button>
+        </span>
+      </div>
+    </div>
+
+    } @else {
+    <button class="btn btn-outline-primary" (click)="this.newCustomer()">
+      CADASTRAR CLIENTE
+    </button>
+    }
+  </div>
+</div>
+
+@if(customer) {
+<div
+  class="alert alert-secondary d-flex justify-content-between align-item-center"
+  role="alert"
+>
+  <span>
+    <strong (click)="this.back()">{{ this.customer.name }}</strong
+    >, <span class="text-muted"> {{ this.customer.accNumber }}</span>
+  </span>
+  <span>
+    {{ this.customer.accountBalance || 0 | currency : "BRL" }}
+  </span>
+</div>
+
+}

@@ -1,0 +1,39 @@
+<div class="customer-statement-wrapper">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">TIPO</th>
+        <th scope="col" class="text-end">VALOR</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (transaction of transactions; track transaction.id; let i = $index) {
+      <tr>
+        <td scope="row">
+          <div class="d-flex flex-column gap-1">
+            <span>
+              {{ bankTransactionType[transaction.type] | uppercase }}
+            </span>
+            <small class="text-muted">{{
+              transaction.date | date : "dd/MM/YYYY HH:mm"
+            }}</small>
+          </div>
+        </td>
+        <td
+          class="text-end"
+          [ngClass]="{
+            'text-danger':
+              bankTransactionType[transaction.type] ===
+              bankTransactionType.DEBIT,
+            'text-success':
+              bankTransactionType[transaction.type] ===
+              bankTransactionType.CREDIT
+          }"
+        >
+          {{ transaction.value | currency : "BRL" }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

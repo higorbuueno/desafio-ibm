@@ -1,0 +1,39 @@
+<div class="customer-wrapper">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Email</th>
+        <th scope="col">Número da conta</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (customer of customers; track customer.id; let i = $index) {
+      <tr>
+        <th scope="row">{{ customer.name }}</th>
+        <td>{{ customer.age | number }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.accNumber }}</td>
+        <td>
+          <span class="d-flex justify-content-end gap-2">
+            <button
+              class="btn btn-outline-primary"
+              [routerLink]="['statment/', customer.id]"
+            >
+              VISUALIZAR
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              (click)="updateCustomer(customer)"
+            >
+              EDITAR
+            </button>
+          </span>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
